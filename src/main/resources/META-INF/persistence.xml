@@ -5,7 +5,7 @@
     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
     version="2.1"><!--  unidade de persistencia com o nome financas  -->
 
-    <persistence-unit name="loja" transaction-type="RESOURCE_LOCAL">        
+    <persistence-unit name="loja_virtual" transaction-type="RESOURCE_LOCAL">        
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/loja_virtual" />
@@ -14,6 +14,8 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>
 </persistence>
