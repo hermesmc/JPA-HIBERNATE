@@ -3,7 +3,6 @@ package br.com.alura.loja.testes;
 import java.math.BigDecimal;
 
 import javax.persistence.EntityManager;
-
 import br.com.alura.loja.dao.CategoriaDao;
 import br.com.alura.loja.dao.ProdutoDao;
 import br.com.alura.loja.modelo.Categoria;
@@ -11,10 +10,9 @@ import br.com.alura.loja.modelo.Produto;
 import br.com.alura.loja.util.JPAUtil;
 
 public class CadastroDeProduto {
-	
 	public static void main(String[] args) {
-		Categoria celulares = new Categoria("CELULARES");
-		Produto celular = new Produto("Xiaomi Redmi", "Muito legal", new BigDecimal("800"), celulares );
+		Categoria celulares = new Categoria(0, "celulares");
+		Produto celular = new Produto("Redmi","Redmi Xiaomi", new BigDecimal ("1500.00"), 1 );
 		
 		EntityManager em = JPAUtil.getEntityManager();
 		ProdutoDao produtoDao = new ProdutoDao(em);
@@ -22,11 +20,10 @@ public class CadastroDeProduto {
 		
 		em.getTransaction().begin();
 		
-		categoriaDao.cadastrar(celulares);
+		categoriaDao.cadastrar(celulares);		
 		produtoDao.cadastrar(celular);
 		
 		em.getTransaction().commit();
 		em.close();
 	}
-
 }
