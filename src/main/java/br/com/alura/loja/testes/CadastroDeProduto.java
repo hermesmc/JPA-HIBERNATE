@@ -21,12 +21,13 @@ public class CadastroDeProduto {
 		em.getTransaction().begin();
 		em.persist(celulares);
 		celulares.setNome("XPTO");
-
-		em.getTransaction().commit();
-		em.close();
+		
+		em.flush();
+		//aqui exemplo de desatachar do entityManager
+		em.clear();
 		
 		celulares.setNome("1234");
-	
+		em.flush();
 	}
 
 }
