@@ -25,6 +25,8 @@ public class CadastroDeProduto {
 		em.flush();
 		//aqui exemplo de desatachar do entityManager
 		em.clear();
+		//aqui atachando novamente
+		celulares = em.merge(celulares);
 		
 		celulares.setNome("1234");
 		em.flush();

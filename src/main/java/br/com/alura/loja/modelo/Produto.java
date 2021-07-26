@@ -25,6 +25,9 @@ public class Produto {
 	@ManyToOne
 	private Categoria categoria;
 	
+	public Produto() {		
+	}
+	
 	public Produto(Long id, String nome, String descricao, BigDecimal preco, LocalDate dataCadastro,
 			Categoria categoria) {
 		super();
