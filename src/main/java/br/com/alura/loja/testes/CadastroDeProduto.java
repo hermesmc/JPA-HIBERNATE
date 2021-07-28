@@ -30,6 +30,12 @@ public class CadastroDeProduto {
 		
 		celulares.setNome("1234");
 		em.flush();
+		
+		//Deletando registros - removendo
+		em.remove(celulares);
+		em.flush();
+		
+		
 	}
 
 }
