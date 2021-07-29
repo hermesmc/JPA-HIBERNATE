@@ -22,9 +22,10 @@ public class CadastroDeProduto {
 		Produto p = produtoDao.buscarPorId(1l);
 		System.out.println(p.getPreco());
 		
-		List<Produto> todos = produtoDao.buscarPorCategoria("Celulares");
-		todos.forEach(p2 -> System.out.println(p.getNome()));		
-		
+		//List<Produto> todos = produtoDao.buscarPorCategoria("Celulares");
+		//todos.forEach(p2 -> System.out.println(p.getNome()));	
+		BigDecimal preco = produtoDao.buscarPrecoProdutoPorNome("Xiami Redmi");
+		System.out.println(preco);			
 	}
 
 	private static void cadastrarProduto() {
