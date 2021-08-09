@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,34 +18,32 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "pedidos")
 public class Pedido {
-	private static final String PEDIDO = "pedido";
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column(name = "valor_total")
 	private BigDecimal valorTotal;
 	private LocalDate data = LocalDate.now();
-	
-	@OneToMany(mappedBy = "pedido")
-	private List<ItemPedido> itens = new ArrayList<>();
 
 	@ManyToOne
 	private Cliente cliente;
 	
-	public Pedido(Cliente cliente) {
-		super();
-		this.cliente = cliente;
-	}
+	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	private List<ItemPedido> itens = new ArrayList<>();
 
 	public Pedido() {
-		
 	}
 
+	public Pedido(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
 	public void adicionarItem(ItemPedido item) {
 		item.setPedido(this);
 		this.itens.add(item);
 	}
-	
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -75,4 +75,5 @@ public class Pedido {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
 }

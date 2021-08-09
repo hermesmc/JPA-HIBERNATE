@@ -25,17 +25,13 @@ public class Produto {
 	@ManyToOne
 	private Categoria categoria;
 	
-	public Produto() {		
+	public Produto() {
 	}
 	
-	public Produto(Long id, String nome, String descricao, BigDecimal preco, LocalDate dataCadastro,
-			Categoria categoria) {
-		super();
-		this.id = id;
+	public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
 		this.nome = nome;
 		this.descricao = descricao;
 		this.preco = preco;
-		this.dataCadastro = dataCadastro;
 		this.categoria = categoria;
 	}
 

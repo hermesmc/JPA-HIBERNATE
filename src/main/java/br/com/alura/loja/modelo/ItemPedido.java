@@ -2,6 +2,7 @@ package br.com.alura.loja.modelo;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,68 +13,70 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "itens_pedido")
 public class ItemPedido {
-    
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)    
-	private Long id;
-	private BigDecimal precoUnitario;
-	private int quantidade;
-	
-    @ManyToOne
-	private Produto produto;
 
-    @ManyToOne
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(name = "preco_unitario")
+	private BigDecimal precoUnitario;
+
+	private int quantidade;
+
+	@ManyToOne
 	private Pedido pedido;
 
-    public ItemPedido(){        
-    }
+	@ManyToOne
+	private Produto produto;
 
-    public ItemPedido(int quantidade, Produto produto, Pedido pedido) {
-        this.quantidade = quantidade;
-        this.produto = produto;
-        this.pedido = pedido;
-        this.precoUnitario = produto.getPreco();
-    }
+	public ItemPedido() {
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public ItemPedido(int quantidade, Pedido pedido, Produto produto) {
+		this.quantidade = quantidade;
+		this.pedido = pedido;
+		this.precoUnitario = produto.getPreco();
+		this.produto = produto;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public BigDecimal getPrecoUnitario() {
-        return precoUnitario;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setPrecoUnitario(BigDecimal precoUnitario) {
-        this.precoUnitario = precoUnitario;
-    }
+	public BigDecimal getPrecoUnitario() {
+		return precoUnitario;
+	}
 
-    public int getQuantidade() {
-        return quantidade;
-    }
+	public void setPrecoUnitario(BigDecimal precoUnitario) {
+		this.precoUnitario = precoUnitario;
+	}
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
+	public int getQuantidade() {
+		return quantidade;
+	}
 
-    public Produto getProduto() {
-        return produto;
-    }
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
-    }
+	public Pedido getPedido() {
+		return pedido;
+	}
 
-    public Pedido getPedido() {
-        return pedido;
-    }
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
+	public Produto getProduto() {
+		return produto;
+	}
 
-    
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
 }
